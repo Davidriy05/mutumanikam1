@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mutumanikam</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f5f1eb;
+}
+header {
+    background: #6b4f3b;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+h1 { margin: 0; }
+
+.container {
+    padding: 20px;
+}
+
+.product {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 10px;
+}
+
+button {
+    background: #6b4f3b;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #ddd;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Mutumanikam</h1>
+    <p>Simple Beauty, Precious Value</p>
+</header>
+
+<div class="container">
+
+    <div class="product">
+        <img src="necklace-cystal.jpg" alt="necklace">
+        <h3>necklace-crystal</h3>
+        <p>Rp55.000</p>
+        <button onclick="order('necklace-crystal')">Beli via WhatsApp</button>
+    </div>
+
+    <div class="product">
+        <img src="purse-10x14cm.jpg" alt="purse">
+        <h3>purse-10x14cm</h3>
+        <p>Rp45.000</p>
+        <button onclick="order('purse-10x14cm')">Beli via WhatsApp</button>
+    </div>
+
+    <div class="product">
+        <img src="bracelet-cuffe-comb.jpg" alt="bracelet">
+        <h3>bracelet-cuffe-comb</h3>
+        <p>Rp33.000</p>
+        <button onclick="order('bracelet-cuffe-comb')">Beli via WhatsApp</button>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Mutumanikam</p>
+</footer>
+
+<script>
+function order(product) {
+    const phone = "6281353885122";
+    const message = "Halo, saya mau beli " + product;
+    const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
