@@ -197,10 +197,31 @@ footer {
 </footer>
 
 <script>
-function order(product) {
+let selectedProduct = "";
+
+function openCheckout(product) {
+    selectedProduct = product;
+    document.getElementById("checkoutModal").style.display = "block";
+}
+
+function kirimWA() {
+    let nama = document.getElementById("nama").value;
+    let alamat = document.getElementById("alamat").value;
+    let jumlah = document.getElementById("jumlah").value;
+
     let phone = "6281353885122";
-    let message = "Halo, saya mau pesan:\n" + product + "\nApakah masih tersedia?";
-    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+
+   let message = `Halo, saya mau order:
+
+Nama: ${nama}
+Alamat: ${alamat}
+Produk: ${selectedProduct}
+Jumlah: ${jumlah}
+
+Mohon konfirmasi ya`;
+
+
+    let url = "https://wa.me/" + 6281353228155 + "?text=" + encodeURIComponent(message);
     window.open(url, "_blank");
 }
 
