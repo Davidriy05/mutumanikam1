@@ -209,17 +209,16 @@ function kirimWA() {
     let alamat = document.getElementById("alamat").value;
     let jumlah = document.getElementById("jumlah").value;
 
-    let phone = "6281353885122";
+    let phone = "6281353885102";
 
-   let message = `Halo, saya mau order:
+    let message = `Halo, saya mau order
 
 Nama: ${nama}
 Alamat: ${alamat}
 Produk: ${selectedProduct}
 Jumlah: ${jumlah}
 
-Mohon konfirmasi ya`;
-
+Mohon konfirmasi ya!`;
 
     let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
     window.open(url, "_blank");
