@@ -4,51 +4,136 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mutumanikam</title>
+
 <style>
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     background: #f5f1eb;
 }
+
+/* HEADER */
 header {
     background: #6b4f3b;
     color: white;
     text-align: center;
-    padding: 20px;
-}
-h1 { margin: 0; }
-
-.container {
-    padding: 20px;
-}
-
-.product {
-    background: white;
     padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    text-align: center;
 }
 
-.product img {
-    width: 100%;
-    max-width: 200px;
-    border-radius: 10px;
+/* MENU */
+nav {
+    background: #8a6a50;
+    padding: 10px;
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-button {
+/* FILTER KATEGORI */
+.filter {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    overflow-x: auto;
+}
+.filter button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    background: #ddd;
+    cursor: pointer;
+}
+.filter button.active {
     background: #6b4f3b;
     color: white;
-    border: none;
+}
+
+/* GRID PRODUK */
+.container {
     padding: 10px;
-    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* CARD PRODUK */
+.product {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* BADGE */
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    font-size: 10px;
+    padding: 3px 6px;
     border-radius: 5px;
+}
+
+/* IMAGE */
+.product img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* TEXT */
+.product h3 {
+    font-size: 13px;
+    margin: 5px 0;
+}
+
+/* HARGA */
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 12px;
+}
+.price {
+    color: #6b4f3b;
+    font-weight: bold;
+}
+
+/* BUTTON */
+button.buy {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 8px;
+    width: 100%;
+    border-radius: 6px;
+    margin-top: 5px;
     cursor: pointer;
 }
 
+/* FOOTER */
 footer {
     text-align: center;
-    padding: 15px;
+    padding: 10px;
     background: #ddd;
 }
 </style>
@@ -58,52 +143,81 @@ footer {
 
 <header>
     <h1>Mutumanikam</h1>
-    <p>Glass Beads Material Accessories</p>
+    <p>Simple Beauty, Precious Value</p>
 </header>
 
-    
-    <div class="container">
-     <div class="product">
-        <a href="necklace-crystal.jpeg" target="_blank">
-             <img src="necklace-crystal.jpeg" alt="Necklace Crystal.jpeg">
-        </a>
-        <h3>Necklace Crystal</h3>
-        <p>Rp55.000</p>
-        <button onclick="order('Necklace Crystal')">Beli via WhatsApp</button>
-    </div>
-    
-   
-    <div class="product">
-        <img src="purse-10x14cm.jpg" alt="purse">
-        <h3>purse-10x14cm</h3>
-        <p>Rp45.000</p>
-        <button onclick="order('purse-10x14cm')">Beli via WhatsApp</button>
-    </div>
+<nav>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Produk</a></li>
+<li><a href="#">Kontak</a></li>
+</ul>
+</nav>
 
-    
-     <div class="product">
-        <a href="bracelet-lynda.jpeg" target="_blank">
-             <img src="bracelet-lynda.jpeg" alt="bracelet">
-        </a>
-        <h3>Bracelet Lynda</h3>
-        <p>Rp33.000</p>
-        <button onclick="order('Bracelet Lynda')">Beli via WhatsApp</button>
-    </div>
+<!-- FILTER -->
+<div class="filter">
+<button onclick="filter('all')" class="active">Semua</button>
+<button onclick="filter('kalung')">Kalung</button>
+<button onclick="filter('gelang')">Gelang</button>
+<button onclick="filter('tas')">Tas</button>
+</div>
 
-  
+<!-- PRODUK -->
+<div class="container">
+
+<div class="product" data-category="kalung">
+<span class="badge">BEST SELLER</span>
+<img src="necklace-cystal.jpg">
+<h3>Necklace Crystal</h3>
+<div class="old-price">Rp70.000</div>
+<div class="price">Rp55.000</div>
+<button class="buy" onclick="order('Necklace Crystal Rp55.000')">Beli via WA</button>
+</div>
+
+<div class="product" data-category="tas">
+<span class="badge">PROMO</span>
+<img src="purse-10x14cm.jpg">
+<h3>Purse 10x14cm</h3>
+<div class="old-price">Rp60.000</div>
+<div class="price">Rp45.000</div>
+<button class="buy" onclick="order('Purse Rp45.000')">Beli via WA</button>
+</div>
+
+<div class="product" data-category="gelang">
+<img src="bracelet-cuffe-comb.jpg">
+<h3>Bracelet Cuffe</h3>
+<div class="price">Rp33.000</div>
+<button class="buy" onclick="order('Bracelet Rp33.000')">Beli via WA</button>
+</div>
 
 </div>
 
 <footer>
-    <p>&copy; 2026 Mutumanikam</p>
+<p>&copy; 2026 Mutumanikam</p>
 </footer>
 
 <script>
 function order(product) {
-    const phone = "6281353885122";
-    const message = "Halo, saya mau beli " + product;
-    const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    let phone = "6281353885122";
+    let message = "Halo, saya mau pesan:\n" + product + "\nApakah masih tersedia?";
+    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
     window.open(url, "_blank");
+}
+
+function filter(category) {
+    let items = document.querySelectorAll(".product");
+    let buttons = document.querySelectorAll(".filter button");
+
+    buttons.forEach(btn => btn.classList.remove("active"));
+    event.target.classList.add("active");
+
+    items.forEach(item => {
+        if (category === "all" || item.dataset.category === category) {
+            item.style.display = "block";
+        } else {
+            item.style.display = "none";
+        }
+    });
 }
 </script>
 
