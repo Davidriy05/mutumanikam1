@@ -156,10 +156,10 @@ footer {
 
 <!-- FILTER -->
 <div class="filter">
-<button onclick="filter('all')" class="active">Semua</button>
-<button onclick="filter('kalung')">Necklace</button>
-<button onclick="filter('gelang')">Bracelet</button>
-<button onclick="filter('tas')">Purse</button>
+<button onclick="filter('all', this)">Semua</button>
+<button onclick="filter('kalung', this)">Necklace</button>
+<button onclick="filter('gelang', this)">Bracelet</button>
+<button onclick="filter('tas', this)">Purse</button>
 </div>
 
 <!-- PRODUK -->
@@ -204,12 +204,12 @@ function order(product) {
     window.open(url, "_blank");
 }
 
-function filter(category) {
+function filter(category, el) {
     let items = document.querySelectorAll(".product");
     let buttons = document.querySelectorAll(".filter button");
 
     buttons.forEach(btn => btn.classList.remove("active"));
-    event.target.classList.add("active");
+    el.classList.add("active");
 
     items.forEach(item => {
         if (category === "all" || item.dataset.category === category) {
