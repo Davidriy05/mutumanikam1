@@ -231,16 +231,23 @@ function kirimWA() {
     let alamat = document.getElementById("alamat").value;
     let jumlah = document.getElementById("jumlah").value;
 
+    if (!nama || !alamat || !jumlah) {
+        alert("Harap isi semua data dulu!");
+        return;
+    }
+
     let phone = "6281353885102";
 
-    let message = `Halo, saya mau order:
+    let message = `Halo Admin Mutumanikam,
 
-Nama: ${nama}
-Alamat: ${alamat}
-Produk: ${selectedProduct}
-Jumlah: ${jumlah}
+Saya mau order:
 
-Mohon konfirmasi ya!`;
+👤 Nama: ${nama}
+📍 Alamat: ${alamat}
+🛍️ Produk: ${selectedProduct}
+🔢 Jumlah: ${jumlah}
+
+Mohon konfirmasi ketersediaan & total ya. Terima kasih 🙏`;
 
     let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
     window.open(url, "_blank");
