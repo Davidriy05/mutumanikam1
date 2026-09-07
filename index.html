@@ -280,10 +280,10 @@ function kirimWA() {
 
 Saya mau order:
 
-Nama: ${nama}
-Alamat: ${alamat}
+Nama: ${name}
+Alamat: ${address}
 Produk: ${selectedProduct}
-Jumlah: ${jumlah}`;
+Jumlah: ${qty}`;
 
     let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
     window.open(url, "_blank");
