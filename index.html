@@ -239,6 +239,18 @@ footer {
 
 
 <script>
+function filterProduct(category) {
+  let products = document.querySelectorAll('.product');
+  
+  products.forEach(product => {
+    if (category === 'all' || product.getAttribute('data-category') === category) {
+      product.style.display = 'block';
+    } else {
+      product.style.display = 'none';
+    }
+  });
+}
+    
 let selectedProduct = "";
 function closeModal() {
 document.getElementById("checkoutModal").style.display ="none";
